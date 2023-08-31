@@ -7,9 +7,7 @@ let seller
 let item
 let value
 
-let formattedDateTime
 
-    
 function getFormattedDateTime(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -20,8 +18,8 @@ function getFormattedDateTime(date) {
   
     const formattedDateTime = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
     return formattedDateTime;
-  }
-  
+}
+
 
 const purchaseFilePath = path.join(currentClientPath, 'Compras.json')
 const paymentFilePath = path.join(currentClientPath, 'Pagamentos.json')
@@ -49,7 +47,7 @@ function newPurchase(){
     
         const currentDate = new Date();
         const formattedDateTime = getFormattedDateTime(currentDate);
-    
+
         const purchase = {
             seller: seller,
             item: item,
@@ -193,10 +191,10 @@ function payOff() {
           existingPurchaseFiles.includes(purchaseFileName) ||
           existingPaymentFiles.includes(paymentFileName)
         ) {
-          sequenceNumber++;
-          findAvailableSequenceNumber();
+          sequenceNumber++
+          findAvailableSequenceNumber()
         } else {
-          moveFiles();
+          moveFiles()
         }
       });
     }
@@ -204,8 +202,6 @@ function payOff() {
     findAvailableSequenceNumber();
   });
 }
-
-
 
 
 document.querySelector('#submit-payment').addEventListener('click', ()=>{
@@ -260,7 +256,6 @@ function submitPayment() {
 
   })
 }
-  
 
 
 async function updatePayments() {
@@ -311,5 +306,5 @@ async function updatePayments() {
   }
 }
 
- 
+
 updatePayments();
