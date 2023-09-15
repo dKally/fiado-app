@@ -88,7 +88,10 @@ function newPurchase(){
             }
 
         })
-    
+        setTimeout(()=> {
+          updatePayments()
+        }, 1000)
+        
 }
 
 function updatePurchases(){
@@ -170,8 +173,18 @@ function payOff() {
           }
 
           console.log('Dívida quitada com sucesso!');
-          updatePurchases();
-          updatePayments()
+          setTimeout(()=> {
+            updatePurchases()
+          }, 500)
+          
+          setTimeout(()=> {
+            updatePayments()
+            let paymentAmountElement = document.querySelector('#payment-amount')
+            let remainingBalanceElement = document.querySelector('#remaining-balance')
+            paymentAmountElement.textContent = ''
+            remainingBalanceElement.textContent = ''
+          }, 1000)
+          
           totalPriceElement.textContent = '';
         });
       });
