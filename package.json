@@ -16,7 +16,9 @@
     "electron-builder": "^24.6.3"
   },
   "dependencies": {
-    "path": "^0.12.7",
+    "path": "^0.12.7"
+  },
+  "build":{
     "appId": "dKally.FiadoAPP"
   }
 }
