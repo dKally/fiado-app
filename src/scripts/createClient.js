@@ -76,8 +76,11 @@ function createRegistration(){
 }
 
 function redirectToClient() {
-    const clientHTMLPath = path.join(__dirname, '..', 'html', 'client.html');
-    const queryParameters = `?currentClient=${encodeURIComponent(`${name} ${lastName}`)}`;
-    const redirectURL = `file://${clientHTMLPath}${queryParameters}`;
-    window.location.href = redirectURL;
+  setTimeout(()=> {
+    const clientHTMLPath = path.join(__dirname, '..', 'html', 'client.html')
+    const queryParameters = `?currentClient=${encodeURIComponent(`${name} ${lastName}`)}`
+    const redirectURL = `file://${clientHTMLPath}${queryParameters}`
+    window.location.href = redirectURL
+}, 500)
+
 }

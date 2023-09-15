@@ -29,17 +29,19 @@ document.addEventListener('DOMContentLoaded', function() {
           console.error(error)
           return
         }
+        setTimeout(()=> {
+            console.log(data)
       
-        console.log(data)
-      
-          const jsonObject = JSON.parse(data)
-          const client = jsonObject.client
-      
-          document.querySelector('#name').innerText = client.name
-          document.querySelector('#last-name').innerText = client.lastName
-          document.querySelector('#phone').innerText = client.phone
-          document.querySelector('#cpf').innerText = client.cpf
-      });
+            const jsonObject = JSON.parse(data)
+            const client = jsonObject.client
+        
+            document.querySelector('#name').innerText = client.name
+            document.querySelector('#last-name').innerText = client.lastName
+            document.querySelector('#phone').innerText = client.phone
+            document.querySelector('#cpf').innerText = client.cpf
+        }, 500)
+
+      })
 
 });
 

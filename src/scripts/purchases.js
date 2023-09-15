@@ -108,12 +108,15 @@ function updatePurchases(){
             listItem.innerHTML = `<span id='span-1'>Vendedor: ${purchase.seller}</span> <span id='span-2'>Item(s): ${purchase.item}</span> <span id='span-3'>Data/Hora: ${purchase.dateTime}</span> <span id='span-4'>Valor Total: ${purchase.value}</span>`;
             purchaseList.appendChild(listItem);
         });
-
+      
         calculateTotalPrice(purchases)
       });
 }
 
-updatePurchases()
+setTimeout(()=> {
+  updatePurchases()
+}, 500)
+
 
 function calculateTotalPrice(purchases) {
     let totalPrice = 0;
@@ -295,9 +298,12 @@ async function updatePayments() {
         const formattedRemainingBalance = remainingBalance.toLocaleString('pt-BR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        });
+        })
+
+        setTimeout(()=> {
+          remainingBalanceElement.textContent = `Saldo Restante: R$ ${formattedRemainingBalance}`;
+        }, 500)
         
-        remainingBalanceElement.textContent = `Saldo Restante: R$ ${formattedRemainingBalance}`;
         console.log(formattedRemainingBalance);
     console.log(data);
   } catch (error) {
@@ -307,4 +313,8 @@ async function updatePayments() {
 }
 
 
-updatePayments();
+setTimeout(()=> {
+  updatePayments()
+}, 1000)
+
+
