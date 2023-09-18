@@ -1,8 +1,8 @@
 Um app simples com electron.js que cadastra compras fiado.
 
-O app irá criar uma pasta "Clientes" em "Documentos" de seu computador (se já existir vai usar a pasta)
+O app irá criar uma pasta "Clientes FiadoAPP" em "Documentos" de seu computador (se já existir vai usar a pasta)
 
-Para instalar, use o comando "npm install", depois o comando "npm run dist" no terminal, ou baixe pelo link:
+Para instalar, use o comando "npm install", depois o comando "npm run dist" no terminal, ou baixe o instalador pelo link:
 https://drive.google.com/file/d/1Eh_9HeR2uHQRjLwIEyKr1ngkoYs1w51C/view?usp=drive_link
 
 
