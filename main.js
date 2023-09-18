@@ -11,7 +11,7 @@ function createWindow(){
     win = new BrowserWindow({
         width: 1920,
         height: 1080,
-        icon: path.join(__dirname, 'icon.png'),
+        icon: path.join(__dirname, '/src' ,'icon.png'),
         fullscreen: true,
         show: false,
         webPreferences:{
