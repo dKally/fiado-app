@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const os = require('os')
 
-const clientsPath = path.join(os.homedir(), 'Documentos', 'Clientes')
+const clientsPath = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
 const container = document.getElementById('folder-list')
 const searchInput = document.getElementById('search-input')
 
