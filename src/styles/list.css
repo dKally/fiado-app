@@ -36,13 +36,13 @@ body{
     margin-left: 10px;
 }
 
-p{
+.box p{
     font-size: 1.2rem;
     border: 1px solid #34495e;
     padding: 5px;
 }
 
-p:hover {
+.box p:hover {
     box-shadow: 0 0 3px #34495e,
     0 0 6px #34495e;
 }
