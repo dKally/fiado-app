@@ -8,6 +8,7 @@ function checkCreateClientesFolder() {
   if (!fs.existsSync(clientesFolderPath)) {
     fs.mkdirSync(clientesFolderPath);
     console.log('Pasta "Clientes FiadoAPP" criada com sucesso!');
+    console.log(clientesFolderPath)
   } else {
     console.log('Pasta "Clientes FiadoAPP" já existe.');
   }
@@ -15,4 +16,4 @@ function checkCreateClientesFolder() {
 
 checkCreateClientesFolder();
 
-console.log(path.join(__dirname, 'icon.png'))
+
