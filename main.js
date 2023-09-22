@@ -60,11 +60,19 @@ app.on('activate', ()=>{
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
-  });
+})
   
-  app.on('will-quit', function () {
+app.on('will-quit', function () {
     globalShortcut.unregisterAll();
-  });
+})
+
+ipcMain.on('close-window', () => {
+    win.close()
+})
+
+ipcMain.on('minimize-window', () => {
+    win.minimize()
+})
 
 const menuTemplate = [
 
