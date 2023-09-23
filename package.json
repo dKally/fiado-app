@@ -25,7 +25,7 @@
       "icon": "build/src/icon.png"
     },
     "win": {
-      "icon": "build/src/icon.png"
+      "icon": "./src/icon.png"
     }
   }
 }
