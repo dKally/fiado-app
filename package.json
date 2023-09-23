@@ -22,7 +22,7 @@
   "build":{
     "appId": "dKally.FiadoAPP",
     "mac": {
-      "icon": "build/src/icon.png"
+      "icon": "./src/icon.png"
     },
     "win": {
       "icon": "./src/icon.png"
