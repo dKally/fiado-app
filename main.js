@@ -5,22 +5,21 @@ let win
 
 const isDev = process.env.NODE_ENV !== undefined && process.env.NODE_ENV === "development"? true:false
 
-app.setName("FiadoAPP")
+app.setName("ToolkitOS")
 
 function createWindow(){
     win = new BrowserWindow({
-        width: 1920,
-        height: 1080,
-        icon: path.join(__dirname, '/src' ,'icon.png'),
-        fullscreen: true,
+        width: 1024,
+        height: 600,
         show: false,
+        icon: path.join(__dirname, '/src' ,'icon.png'),
         webPreferences:{
             nodeIntegration: true,
             contextIsolation: false,
         },
     })
 
-    win.loadFile('./src/index.html')
+    win.loadFile('./src/recommended/index.html')
     if(isDev){
         win.webContents.openDevTools()
     }
@@ -60,19 +59,11 @@ app.on('activate', ()=>{
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
-})
+  });
   
-app.on('will-quit', function () {
+  app.on('will-quit', function () {
     globalShortcut.unregisterAll();
-})
-
-ipcMain.on('close-window', () => {
-    win.close()
-})
-
-ipcMain.on('minimize-window', () => {
-    win.minimize()
-})
+  });
 
 const menuTemplate = [
 
