@@ -1,26 +1,33 @@
 {
-  "name": "fiadoapp",
-  "productName": "FiadoAPP",
+  "name": "toolkit_os",
   "version": "1.0.0",
-  "description": "Um app para registrar compras fiado de clientes.",
+  "description": "made to facilitate the installations in the new OS",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "start-dev": "NODE_ENV=development electron .",
+    "start-nodemon": "nodemon --watch main.js --exec npm start",
     "pack": "electron-build --dir",
     "dist": "electron-builder"
   },
-  "author": "dKally",
-  "license": "ISC",
-  "devDependencies": {
-    "electron": "^24.3.1",
-    "electron-builder": "^24.6.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamspooks/Toolkit_OS.git"
   },
-  "dependencies": {
-    "path": "^0.12.7"
+  "author": "JGDev & Kally",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamspooks/Toolkit_OS/issues"
+  },
+  "homepage": "https://github.com/iamspooks/Toolkit_OS#readme",
+  "devDependencies": {
+    "electron": "^23.2.0",
+    "electron-packager": "^17.1.1",
+    "electron-builder": "^24.6.3",
+    "nodemon": "^2.0.22"
   },
   "build":{
-    "appId": "dKally.FiadoAPP",
+    "appId": "Toolkit_OS",
     "mac": {
       "icon": "./src/icon.png"
     },
