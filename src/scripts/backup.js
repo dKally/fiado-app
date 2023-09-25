@@ -3,6 +3,10 @@ const zip = require('zip-local')
 const path = require('path')
 const os = require('os')
 
+document.querySelector('.save-backup').addEventListener('click', ()=>{
+    saveBackup()
+})
+
 function saveBackup() {
     const clientsPaste = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
 
@@ -13,5 +17,3 @@ function saveBackup() {
 
   console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`);
 }
-
-saveBackup()
