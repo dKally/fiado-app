@@ -1,25 +1,26 @@
-const {app, BrowserWindow, ipcMain, Menu, globalShortcut} = require('electron')
+const {app, BrowserWindow, ipcMain, Menu, globalShortcut, dialog} = require('electron')
 const path = require('path')
 
 let win
 
 const isDev = process.env.NODE_ENV !== undefined && process.env.NODE_ENV === "development"? true:false
 
-app.setName("ToolkitOS")
+app.setName("FiadoAPP")
 
 function createWindow(){
     win = new BrowserWindow({
-        width: 1024,
-        height: 600,
-        show: false,
+        width: 1920,
+        height: 1080,
         icon: path.join(__dirname, '/src' ,'icon.png'),
+        fullscreen: true,
+        show: false,
         webPreferences:{
             nodeIntegration: true,
             contextIsolation: false,
         },
     })
 
-    win.loadFile('./src/recommended/index.html')
+    win.loadFile('./src/index.html')
     if(isDev){
         win.webContents.openDevTools()
     }
@@ -38,7 +39,13 @@ function createWindow(){
 
     globalShortcut.register('Shift+I', () => {
         win.webContents.openDevTools()
-      });
+      })
+
+    ipcMain.on('open-dialog', (event) => {
+        dialog.showOpenDialog(win, { properties: ['openDirectory'] }).then(result => {
+          event.sender.send('selected-folder', result.filePaths);
+        })
+    })
 }
 
 app.whenReady().then(()=>{
@@ -59,11 +66,19 @@ app.on('activate', ()=>{
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') app.quit();
-  });
+})
   
-  app.on('will-quit', function () {
+app.on('will-quit', function () {
     globalShortcut.unregisterAll();
-  });
+})
+
+ipcMain.on('close-window', () => {
+    win.close()
+})
+
+ipcMain.on('minimize-window', () => {
+    win.minimize()
+})
 
 const menuTemplate = [
 
