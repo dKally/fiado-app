@@ -6,6 +6,18 @@ const { shell } = require('electron')
 const { ipcRenderer } = require('electron')
 
 
+// conflito dos arquivos minimize-close.js e backup.js, lembrar de arrumar.
+
+document.querySelector('.close').addEventListener('click', () => {
+    ipcRenderer.send('close-window')
+})
+
+document.querySelector('.minimize').addEventListener('click', () => {
+    ipcRenderer.send('minimize-window')
+})
+
+// -------------------------------------------------------------------------
+
 
 document.querySelector('.save-backup').addEventListener('click', ()=>{
     saveBackup()
@@ -25,9 +37,9 @@ function saveBackup() {
     const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip')
 
 
-  zip.sync.zip(clientsPaste).compress().save(clientsZip);
+  zip.sync.zip(clientsPaste).compress().save(clientsZip)
 
-  alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`);
+  alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
 }
 
 function openBackupPaste(){
@@ -36,29 +48,44 @@ function openBackupPaste(){
 
 
 function openBackup() {
-  ipcRenderer.send('open-dialog');
+  ipcRenderer.send('open-dialog')
 }
 
-// Para receber a pasta selecionada do processo principal
 ipcRenderer.on('selected-folder', (event, paths) => {
     if (!paths || paths.length === 0) {
-      console.log('Seleção de pasta cancelada.');
+      console.log('Seleção de pasta cancelada.')
     } else {
-      const folderPath = paths[0];
-      const destinoPasta = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP');
-  
-      // Verifique o nome da pasta e mova, substituindo se já existir
-      if (path.basename(folderPath) === 'Clientes FiadoAPP') {
-        try {
-          fs.removeSync(destinoPasta); // Remova o destino existente recursivamente
-          fs.moveSync(folderPath, destinoPasta); // Mova a nova pasta para o destino
-  
-          console.log(`A pasta "Clientes FiadoAPP" foi movida e substituiu ${destinoPasta}`);
-        } catch (error) {
-          console.error('Erro ao mover a pasta:', error);
-        }
-      } else {
-        console.log('O nome da pasta selecionada não é "Clientes FiadoAPP".');
+      const folderPath = paths[0]
+      const pathDestiny = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
+      if (path.basename(folderPath) !== 'Clientes FiadoAPP'){
+        alert('Essa não é uma pasta de Backup válida. =(')
+        return
       }
+      document.querySelector('.container-alert-1').classList.remove('hide')
+
+      document.querySelector('.exit').addEventListener('click',()=>{
+        document.querySelector('.container-alert-1').classList.add('hide')
+        return
+      })
+
+      document.querySelector('.confirm').addEventListener('click',()=>{
+  
+        if (path.basename(folderPath) === 'Clientes FiadoAPP') {
+          try {
+            fs.removeSync(pathDestiny) 
+            fs.moveSync(folderPath, pathDestiny) 
+    
+            console.log(`A pasta "Clientes FiadoAPP" foi movida e substituiu ${pathDestiny}`)
+            document.querySelector('.container-alert-1').classList.add('hide')
+            alert('Backup feito com sucesso!')
+          } catch (error) {
+            console.error('Erro ao mover a pasta:', error)
+          }
+        } else {
+          console.log('O nome da pasta selecionada não é "Clientes FiadoAPP".')
+          document.querySelector('.container-alert-1').classList.add('hide')
+          alert('Algo deu errado... =(')
+        }
+      })
     }
-  });
+  })

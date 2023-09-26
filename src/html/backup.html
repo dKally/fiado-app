@@ -10,6 +10,8 @@
 </head>
 <body>
     <div class="content">
+        <a class="btn btn_" href="../index.html">Home</a>
+
         <div class="minimize-close">
             <p class="minimize">-</p>
             <p class="close">x</p>
@@ -18,14 +20,21 @@
             <p class="btn save-backup">Salvar Backup</p>
 
             <p class="btn backup">Fazer Backup</p>
-            <!-- <input class="file-backup" type="file" webkitdirectory directory>
-            <p class="btn send-file-btn">Enviar</p> -->
 
             <p class="btn open-backup">Abrir Pasta de Backup</p>
+        </div>
+
+        <div class="container-alert-1 hide">
+
+            <p>Ao clicar em "Confirmar", sua pasta "Clientes FiadoAPP" atual será excluida e será
+                substituida por sua pasta de backup, deseja continuar?
+            </p>
+            <button class="btn confirm">Confirmar</button>
+            <button class="btn exit">Voltar</button>
         </div>
     </div>
 
     <script src="../scripts/backup.js"></script>
-    <script src="../scripts/minimize-close.js"></script>
+
 </body>
 </html>
