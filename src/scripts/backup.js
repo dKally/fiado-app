@@ -31,7 +31,25 @@ document.querySelector('.backup').addEventListener('click', ()=>{
     openBackup()
 })
 
+
 function saveBackup() {
+  document.querySelector('.container-alert-2').classList.remove('hide')
+
+  document.querySelector('.exit').addEventListener('click', ()=>{
+
+    document.querySelector('.container-alert-2').classList.add('hide')}
+
+  )
+
+  document.querySelector('.paste').addEventListener('click', ()=>{
+    document.querySelector('.container-alert-2').classList.add('hide')
+    alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
+    shell.openPath(path.join(os.homedir(), 'Documentos'))
+  })
+
+  document.querySelector('.zip').addEventListener('click', ()=>{
+    document.querySelector('.container-alert-2').classList.add('hide')
+    shell.openPath(path.join(os.homedir(), 'Documentos'))
     const clientsPaste = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
 
     const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip')
@@ -40,7 +58,11 @@ function saveBackup() {
   zip.sync.zip(clientsPaste).compress().save(clientsZip)
 
   alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
+  shell.openPath(path.join(os.homedir(), 'Documentos'))
+  })
+
 }
+
 
 function openBackupPaste(){
     shell.openPath(path.join(os.homedir(), 'Documentos'))
