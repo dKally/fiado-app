@@ -48,7 +48,7 @@ function saveBackup() {
 
   document.querySelector('.paste').addEventListener('click', ()=>{
     document.querySelector('.container-alert-2').classList.add('hide')
-    alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsPaste}".`)
+    console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsPaste}".`)
     shell.openPath(path.join(os.homedir(), 'Documentos'))
   })
 
@@ -58,7 +58,7 @@ function saveBackup() {
 
   zip.sync.zip(clientsPaste).compress().save(clientsZip)
 
-  alert(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
+  console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
   shell.openPath(path.join(os.homedir(), 'Documentos'))
   })
 
@@ -100,7 +100,7 @@ ipcRenderer.on('selected-folder', (event, paths) => {
     
             console.log(`A pasta "Clientes FiadoAPP" foi movida e substituiu ${pathDestiny}`)
             document.querySelector('.container-alert-1').classList.add('hide')
-            alert('Backup feito com sucesso!')
+            console.log('Backup feito com sucesso!')
           } catch (error) {
             console.error('Erro ao mover a pasta:', error)
           }
