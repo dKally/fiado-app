@@ -40,7 +40,7 @@ function saveBackup() {
 
   document.querySelector('.container-alert-2').classList.remove('hide')
 
-  document.querySelector('.exit').addEventListener('click', ()=>{
+  document.querySelector('.exit2').addEventListener('click', ()=>{
 
     document.querySelector('.container-alert-2').classList.add('hide')}
 
@@ -66,7 +66,7 @@ function saveBackup() {
 
 
 function openBackupPaste(){
-    shell.openPath(path.join(os.homedir(), 'Documentos'))
+    shell.openPath(path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP'))
 }
 
 
