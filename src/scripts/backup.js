@@ -59,7 +59,7 @@ function saveBackup() {
   zip.sync.zip(clientsPaste).compress().save(clientsZip)
 
   console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
-  shell.openPath(path.join(os.homedir(), 'Documentos'))
+
   })
 
 }
