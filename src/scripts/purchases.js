@@ -96,13 +96,15 @@ function newPurchase(){
 
 function updatePurchases(){
     const purchaseList = document.getElementById('purchase-list')
+    document.querySelector('.purchases').classList.add('hide')
+    
     purchaseList.innerHTML = ''
     fs.readFile(purchaseFilePath, 'utf8', (error, data) => {
         if (error) {
           console.log('Não existe compras no momento')
           return
         }
-      
+        document.querySelector('.purchases').classList.remove('hide')
         console.log(data)
       
         const purchases = JSON.parse(data);
@@ -278,12 +280,23 @@ async function updatePayments() {
   const paymentAmountElement = document.getElementById('payment-amount');
   const remainingBalanceElement = document.getElementById('remaining-balance');
 
+  document.querySelector('#payment-list').classList.add('hide')
+  document.querySelector('#payment-amount').classList.add('hide')
+  document.querySelector('#remaining-balance').classList.add('hide')
+
+
   const paymentsList = document.getElementById('payment-list');
   paymentsList.innerHTML = '';
 
   try {
     const data = await readFile(paymentFilePath, 'utf8');
     console.log(data)
+
+    document.querySelector('#payment-list').classList.remove('hide')
+    document.querySelector('#payment-amount').classList.remove('hide')
+    document.querySelector('#remaining-balance').classList.remove('hide')
+
+
       
         const payments = JSON.parse(data);
 
@@ -320,7 +333,8 @@ async function updatePayments() {
         console.log(formattedRemainingBalance);
     console.log(data);
   } catch (error) {
-    console.log('Não existe pagamentos no momento');
+
+    console.log('Não existe pagamentos no momento')
     return;
   }
 }
