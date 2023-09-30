@@ -1,22 +1,9 @@
-const fs = require('fs-extra');
+const fs = require('fs-extra')
 const zip = require('zip-local')
 const path = require('path')
 const os = require('os')
 const { shell } = require('electron')
-const { ipcRenderer } = require('electron')
 
-
-// conflito dos arquivos minimize-close.js e backup.js, lembrar de arrumar.
-
-document.querySelector('.close').addEventListener('click', () => {
-    ipcRenderer.send('close-window')
-})
-
-document.querySelector('.minimize').addEventListener('click', () => {
-    ipcRenderer.send('minimize-window')
-})
-
-// -------------------------------------------------------------------------
 
 
 document.querySelector('.save-backup').addEventListener('click', ()=>{
