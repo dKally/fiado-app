@@ -22,8 +22,16 @@ function sendForm() {
     lastName = document.querySelector('#last-name').value
     console.log(lastName)
     phone = document.querySelector('#phone').value
+    if (phone.length !== 10 && phone.length !== 0) {
+      alert('Telefone invalido!')
+      return
+    }
     console.log(phone)
     cpf = document.querySelector('#cpf').value
+    if (cpf.length !== 11 && cpf.length !== 0) {
+      alert('CPF invalido!')
+      return
+    }
     console.log(cpf)
     if(name == ''){
       return alert('Insira um Nome!')

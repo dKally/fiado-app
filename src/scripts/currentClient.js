@@ -35,10 +35,54 @@ document.addEventListener('DOMContentLoaded', function() {
             const jsonObject = JSON.parse(data)
             const client = jsonObject.client
         
+
+
+            // Formatar CPF
+
+            if(client.cpf === ""){
+                console.log('Nenhum CPF registrado!')
+            }
+            else{
+
+                const cpfString = client.cpf.toString()
+
+                const formattedCPF = cpfString.slice(0, 3) + '.' +
+                cpfString.slice(3, 6) + '.' +
+                cpfString.slice(6, 9) + '-' +
+                cpfString.slice(9);
+
+                document.querySelector('#cpf').innerText = formattedCPF
+                
+            }
+
+            // Formatar CPF
+
+
+            // Formatar Número
+
+            if(client.phone === ""){
+                console.log('Nenhum número registrado!')
+            }
+            else{
+
+                const phoneString = client.phone.toString()
+
+
+                const formattedPhone = `(${phoneString.slice(0, 2)}) ` +
+                `${phoneString.slice(2, 7)}-${phoneString.slice(7)}`;
+
+                document.querySelector('#phone').innerText = formattedPhone
+
+            }
+
+
+            // Formatar Número
+            
+
             document.querySelector('#name').innerText = client.name
             document.querySelector('#last-name').innerText = client.lastName
-            document.querySelector('#phone').innerText = client.phone
-            document.querySelector('#cpf').innerText = client.cpf
+
+
         }, 500)
 
       })
