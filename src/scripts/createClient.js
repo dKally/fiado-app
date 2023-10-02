@@ -5,9 +5,9 @@ const fs = require('fs')
 
 document.querySelector('.submit-btn').addEventListener('click', () => {
   sendForm();
-});
+})
 
-const clientsPath = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP');
+const clientsPath = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
 
 let name
 let lastName
@@ -37,16 +37,16 @@ function sendForm() {
 
 function createFolder(){
 
-    clientFolderPath = path.join(clientsPath, `${name} ${lastName}`);
+    clientFolderPath = path.join(clientsPath, `${name} ${lastName}`)
     console.log(clientFolderPath)
 
  
     fs.mkdir(clientFolderPath, { recursive: true }, (error) => {
         if (error) {
-          console.error(error);
+          console.error(error)
         } else {
-          console.log('Pasta do cliente criada com sucesso!');
-          createRegistration();
+          console.log('Pasta do cliente criada com sucesso!')
+          createRegistration()
         }
     });
 }

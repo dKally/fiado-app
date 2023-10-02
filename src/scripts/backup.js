@@ -67,10 +67,12 @@ ipcRenderer.on('selected-folder', (event, paths) => {
     } else {
       const folderPath = paths[0]
       const pathDestiny = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP')
+      console.log(path.basename)
       if (path.basename(folderPath) !== 'Clientes FiadoAPP'){
         alert('Essa não é uma pasta de Backup válida. =(')
         return
       }
+
       document.querySelector('.container-alert-1').classList.remove('hide')
 
       document.querySelector('.exit').addEventListener('click',()=>{

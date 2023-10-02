@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       })
 
-});
+})
 
 document.addEventListener('DOMContentLoaded', function() {
 
     const purchasesScript = document.createElement('script');
     purchasesScript.src = '../scripts/purchases.js';
     document.body.appendChild(purchasesScript);
-});
+})

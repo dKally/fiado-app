@@ -53,7 +53,7 @@ function newPurchase(){
             item: item,
             value: parseFloat(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             dateTime: formattedDateTime
-        };
+        }
     
     
     
@@ -110,12 +110,12 @@ function updatePurchases(){
         const purchases = JSON.parse(data);
         purchases.forEach((purchase) => {
             const listItem = document.createElement('li');
-            listItem.innerHTML = `<span id='span-1'>Vendedor: ${purchase.seller}</span> <span id='span-2'>Item(s): ${purchase.item}</span> <span id='span-3'>Data/Hora: ${purchase.dateTime}</span> <span id='span-4'>Valor Total: ${purchase.value}</span>`;
+            listItem.innerHTML = `<span id='span-1'>Vendedor: ${purchase.seller}</span> <span id='span-2'>Item(s): ${purchase.item}</span> <span id='span-3'>Data/Hora: ${purchase.dateTime}</span> <span id='span-4'>Valor Total: ${purchase.value}</span>`
             purchaseList.appendChild(listItem);
-        });
+        })
       
         calculateTotalPrice(purchases)
-      });
+      })
 }
 
 setTimeout(()=> {
@@ -126,16 +126,16 @@ setTimeout(()=> {
 function calculateTotalPrice(purchases) {
     let totalPrice = 0;
     purchases.forEach((purchase) => {
-      const numericValue = parseFloat(purchase.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'));
+      const numericValue = parseFloat(purchase.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
       totalPrice += numericValue;
-    });
+    })
   
     const formattedTotalPrice = totalPrice.toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL',
     });
   
-    totalPriceElement.textContent = `Valor Total das Compras: ${formattedTotalPrice}`;
+    totalPriceElement.textContent = `Valor Total das Compras: ${formattedTotalPrice}`
 }
 
 document.querySelector('.pay').addEventListener('click', ()=>{
@@ -143,13 +143,13 @@ document.querySelector('.pay').addEventListener('click', ()=>{
 })
 
 function payOff() {
-  const historicFolderPath = path.join(currentClientPath, 'Historic');
-  let sequenceNumber = 1;
+  const historicFolderPath = path.join(currentClientPath, 'Historic')
+  let sequenceNumber = 1
 
   fs.mkdir(historicFolderPath, { recursive: true }, (error) => {
     if (error) {
-      console.error(error);
-      return;
+      console.error(error)
+      return
     }
 
     function moveFiles() {
@@ -161,7 +161,7 @@ function payOff() {
           console.error(error);
           updatePurchases();
           updatePayments()
-          totalPriceElement.textContent = '';
+          totalPriceElement.textContent = ''
           return;
         }
 
@@ -170,11 +170,11 @@ function payOff() {
             console.error(error);
             updatePurchases();
             updatePayments()
-            totalPriceElement.textContent = '';
+            totalPriceElement.textContent = ''
             return;
           }
 
-          console.log('Dívida quitada com sucesso!');
+          console.log('Dívida quitada com sucesso!')
           setTimeout(()=> {
             updatePurchases()
           }, 500)
@@ -193,8 +193,8 @@ function payOff() {
     }
 
     function findAvailableSequenceNumber() {
-      const purchaseFileName = `Compras_${sequenceNumber}.json`;
-      const paymentFileName = `Pagamentos_${sequenceNumber}.json`;
+      const purchaseFileName = `Compras_${sequenceNumber}.json`
+      const paymentFileName = `Pagamentos_${sequenceNumber}.json`
 
       fs.readdir(historicFolderPath, (error, files) => {
         if (error) {
@@ -214,11 +214,11 @@ function payOff() {
         } else {
           moveFiles()
         }
-      });
+      })
     }
 
     findAvailableSequenceNumber();
-  });
+  })
 }
 
 
@@ -228,20 +228,20 @@ document.querySelector('#submit-payment').addEventListener('click', ()=>{
 
 function submitPayment() {
     const paymentInput = document.querySelector('#payment');
-    const paymentValue = parseFloat(paymentInput.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'));
+    const paymentValue = parseFloat(paymentInput.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
   
     if (isNaN(paymentValue) || paymentValue <= 0) {
-      alert('Digite um valor válido para o pagamento.');
+      alert('Digite um valor válido para o pagamento.')
       return;
     }
   
-    const currentDate = new Date();
-    const formattedDateTime = getFormattedDateTime(currentDate);
+    const currentDate = new Date()
+    const formattedDateTime = getFormattedDateTime(currentDate)
   
     const payment = {
       payment: parseFloat(paymentValue).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
       dateTime: formattedDateTime,
-    };
+    }
     
 
     fs.readFile(paymentFilePath, 'utf8', (error, data) => {
@@ -253,11 +253,11 @@ function submitPayment() {
               } else {
                   console.log('Pagamento registrado com sucesso!')
                   updatePayments()
-                  paymentInput.value = '';
+                  paymentInput.value = ''
               }
           })
       } else {
-          let payments = JSON.parse(data);
+          let payments = JSON.parse(data)
 
           console.log(payment)
           payments.push(payment);
@@ -267,7 +267,7 @@ function submitPayment() {
               } else {
                   console.log('Pagamento registrado com sucesso!')
                   updatePayments()
-                  paymentInput.value = '';
+                  paymentInput.value = ''
               }
           })
       }
@@ -277,19 +277,19 @@ function submitPayment() {
 
 
 async function updatePayments() {
-  const paymentAmountElement = document.getElementById('payment-amount');
-  const remainingBalanceElement = document.getElementById('remaining-balance');
+  const paymentAmountElement = document.getElementById('payment-amount')
+  const remainingBalanceElement = document.getElementById('remaining-balance')
 
   document.querySelector('#payment-list').classList.add('hide')
   document.querySelector('#payment-amount').classList.add('hide')
   document.querySelector('#remaining-balance').classList.add('hide')
 
 
-  const paymentsList = document.getElementById('payment-list');
-  paymentsList.innerHTML = '';
+  const paymentsList = document.getElementById('payment-list')
+  paymentsList.innerHTML = ''
 
   try {
-    const data = await readFile(paymentFilePath, 'utf8');
+    const data = await readFile(paymentFilePath, 'utf8')
     console.log(data)
 
     document.querySelector('#payment-list').classList.remove('hide')
@@ -298,28 +298,28 @@ async function updatePayments() {
 
 
       
-        const payments = JSON.parse(data);
+        const payments = JSON.parse(data)
 
         payments.forEach((payments) => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span id='span-1'>Valor Pago: ${payments.payment}</span> <span id='span-2'>Data/Hora: ${payments.dateTime}</span>`;
-            paymentsList.appendChild(listItem);
-        });
+            const listItem = document.createElement('li')
+            listItem.innerHTML = `<span id='span-1'>Valor Pago: ${payments.payment}</span> <span id='span-2'>Data/Hora: ${payments.dateTime}</span>`
+            paymentsList.appendChild(listItem)
+        })
 
         const totalPayment = payments.reduce((acc, curr) => {
           const paymentValue = parseFloat(curr.payment.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
           return acc + paymentValue;
-        }, 0);
+        }, 0)
     
         const formattedPayment = totalPayment.toLocaleString('pt-BR', {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
-        });
+        })
         
-        paymentAmountElement.textContent = `Valor Total Pago: R$ ${formattedPayment}`;
+        paymentAmountElement.textContent = `Valor Total Pago: R$ ${formattedPayment}`
         
-        const purchasesTotalPrice = parseFloat(totalPriceElement.textContent.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'));
-        const remainingBalance = purchasesTotalPrice - totalPayment;
+        const purchasesTotalPrice = parseFloat(totalPriceElement.textContent.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
+        const remainingBalance = purchasesTotalPrice - totalPayment
         
         const formattedRemainingBalance = remainingBalance.toLocaleString('pt-BR', {
           minimumFractionDigits: 2,
@@ -327,15 +327,15 @@ async function updatePayments() {
         })
 
         setTimeout(()=> {
-          remainingBalanceElement.textContent = `Saldo Restante: R$ ${formattedRemainingBalance}`;
+          remainingBalanceElement.textContent = `Saldo Restante: R$ ${formattedRemainingBalance}`
         }, 500)
         
-        console.log(formattedRemainingBalance);
-    console.log(data);
+        console.log(formattedRemainingBalance)
+    console.log(data)
   } catch (error) {
 
     console.log('Não existe pagamentos no momento')
-    return;
+    return
   }
 }
 
