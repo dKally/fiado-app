@@ -139,8 +139,18 @@ function calculateTotalPrice(purchases) {
 }
 
 document.querySelector('.pay').addEventListener('click', ()=>{
+  document.querySelector('.payOff').classList.remove('hide')
+  document.querySelector('.pay-off-confirm').addEventListener('click', ()=>{
+    document.querySelector('.payOff').classList.add('hide')
     payOff()
+    console.log('Dívida quitada com sucesso!')
+  })
+  document.querySelector('.pay-off-exit').addEventListener('click', ()=>{
+    document.querySelector('.payOff').classList.add('hide')
+    console.log('Ação cancelada.')
+  })
 })
+
 
 function payOff() {
   const historicFolderPath = path.join(currentClientPath, 'Historic')
