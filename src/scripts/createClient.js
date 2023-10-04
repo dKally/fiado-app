@@ -22,7 +22,7 @@ function sendForm() {
     lastName = document.querySelector('#last-name').value
     console.log(lastName)
     phone = document.querySelector('#phone').value
-    if (phone.length !== 10 && phone.length !== 0) {
+    if (phone.length !== 11 && phone.length !== 0) {
       alert('Telefone invalido!')
       return
     }
