@@ -1,0 +1,737 @@
+body{
+    overflow: hidden;
+}
+
+.content{
+    background-color: rgb(15, 15, 15);
+    overflow: hidden;
+}
+
+/* Animation border */
+
+
+.span-div span:nth-child(1){
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, rgb(15, 15, 15), rgb(97, 0, 97));
+    animation: animate1 4s linear infinite;
+}
+
+@keyframes animate1{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+.span-div span:nth-child(2){
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, rgb(15, 15, 15), rgb(97, 0, 97));
+    animation: animate2 4s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes animate2{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+
+.span-div span:nth-child(3){
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to left, rgb(15, 15, 15), rgb(97, 0, 97));
+    animation: animate3 4s linear infinite;
+}
+
+@keyframes animate3{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.span-div span:nth-child(4){
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to top, rgb(15, 15, 15), rgb(97, 0, 97));
+    animation: animate4 4s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes animate4{
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}
+
+
+/*  */
+
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    color: #fff;
+    opacity: 100%;
+}
+
+.title-welcome{
+    font-size: 5.5rem;
+    letter-spacing: 10px;
+    opacity: 0%;
+    transform: translateY(5px) scale(0.2);
+    animation: show 3s ease-in-out forwards;
+}
+
+
+/* Animation Welcome */
+
+.welcome span{
+    font-size: 4rem;
+    letter-spacing: 5px;
+    font-weight: bold;
+    animation: shine 3s ease-in-out infinite;
+}
+
+.welcome span:nth-of-type(1){
+    margin-right: 12px;
+}
+
+.welcome span:nth-of-type(2){
+    animation-delay: 3.10s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(3){
+    animation-delay: 3.20s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(4){
+    animation-delay: 3.30s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(5){
+    animation-delay: 3.40s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(6){
+    animation-delay: 3.50s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(7){
+    animation-delay: 3.60s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(8){
+    animation-delay: 3.70s;
+    margin-right: 12px;
+}
+.welcome span:nth-of-type(9){
+    animation-delay: 3.80s;
+}
+.welcome span:nth-of-type(10){
+    animation-delay: 3.90s;
+}
+
+/* Animation Welcome */
+
+@keyframes shine{
+    0%{
+        color: rgb(131, 0, 131);
+        text-shadow: 0 0 12px rgb(131, 0, 131),
+        0 0 50px rgb(131, 0, 131),
+        0 0 100px rgb(131, 0, 131)
+        ;
+    }
+    10%, 90%{
+        color: #fff;
+        text-shadow: none;
+    }
+}
+
+/*  */
+
+
+/* Description Welcome + Animation */
+
+.descripton-welcome{
+    font-family: monospace;
+    font-size: 1.8rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-right: 4px solid white;
+    text-align: center;
+    width: 0ch;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 10px;
+    animation: typing 1.4s steps(21) 2s forwards, blinking 0.5s infinite 3s step-end alternate, show-1 2s ease-in-out forwards;
+}
+
+@keyframes typing {
+    from{
+        width: 0;
+    }
+    to{
+        width: 22ch;
+    }
+}
+
+@keyframes blinking {
+    50%{
+        border-color: transparent;
+    }
+    
+}
+
+/*  */
+
+.developer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-decoration: none;
+    transform: translateX(5px) scale(0.9);
+    transform: translateY(5px) scale(0.9);
+    transform: translateZ(5px) scale(0.9);
+    transition: 0.3s ease;
+    opacity: 0;
+    animation: show-developer 2s ease-in-out 3s forwards;
+}
+
+.developer:hover{
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+}
+
+.style-img {
+    width: 70px;
+    height: 70px;
+    overflow: hidden; 
+    border-radius: 50%; 
+}
+
+.developer img{
+    max-width: 100%;
+    height: auto;
+}
+
+.developer p{
+    color: rgb(97, 0, 97);
+    font-size: 2rem;
+    letter-spacing: 5px;
+    font-weight: bold;
+}
+
+.continue-welcome{
+    margin-top: 30px;
+    font-size: 1.1rem;
+    opacity: 0;
+    animation: blinking-continue 2s ease-in-out 4s infinite;
+}
+
+/* Register */
+
+.register{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
+}
+
+.register-title{
+    font-size: 4rem;
+    opacity: 0%;
+    font-family: monospace;
+    width: 0ch;
+    white-space: nowrap;
+    border-right: 10px solid white;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    animation: typing-2 1s steps(14) 0.8s forwards, blinking-1 0.5s infinite 2s step-end alternate, show-1 2s ease-in-out forwards;
+}
+
+@keyframes typing-2 {
+    from{
+        width: 0;
+    }
+    to{
+        width: 15ch;
+    }
+}
+
+.register div input{
+    padding: 20px;
+    color: rgb(97, 0, 97);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: none;
+    border: 1px solid rgb(97, 0, 97);
+    outline: none;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    transform: translateX(5px) scale(0.8);
+    transform: translateY(5px) scale(0.8);
+    transform: translateZ(5px) scale(0.8);
+}
+
+.register div input:focus{
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+    box-shadow: 0 0 10px rgb(97, 0, 97),
+    0 0 22px rgb(97, 0, 97);
+}
+
+.register-div-1{
+    opacity: 0%;
+    animation: input-1 0.8s ease-in-out 1.5s forwards;
+}
+
+.register-div-2{
+    opacity: 0%;
+    animation: input-2 0.8s ease-in-out 1.8s forwards;
+}
+
+.register-div-3{
+    opacity: 0%;
+    animation: input-1 0.8s ease-in-out 2.1s forwards;
+}
+
+.send-register{
+    opacity: 0%;
+    padding: 30px 80px 30px 80px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px 0px 10px 0px;
+    color: rgb(97, 0, 97);
+    transform: translateX(5px) scale(0.8);
+    transform: translateY(5px) scale(0.8);
+    transform: translateZ(5px) scale(0.8);
+    border: 1px solid rgb(97, 0, 97);
+    animation: btn-login 3s ease-in-out 2.5s forwards;
+}
+
+.send-register:hover{
+    box-shadow: 0 0 10px rgb(97, 0, 97),
+    0 0 22px rgb(97, 0, 97);
+    background-color: gray;
+    color: rgb(131, 0, 131);
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+}
+
+.alert-password{
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    font-size: 1.6rem;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0%);
+    padding: 30px 50px 30px 50px;
+    border-radius: 7px 0px 7px 0px;
+}
+
+.close-alert-password{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    color: black;
+    transform: translateX(5px) scale(0.9);
+    transform: translateY(5px) scale(0.9);
+    transform: translateZ(5px) scale(0.9);
+}
+.close-alert-password:hover{
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+    cursor: pointer;
+}
+
+
+/* Window Login */
+
+.sign-in{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
+}
+
+.sign-in-title{
+    font-size: 5rem;
+    opacity: 0%;
+    font-family: monospace;
+    width: 0ch;
+    white-space: nowrap;
+    border-right: 10px solid white;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    animation: typing-1 0.5s steps(5) 0.8s forwards, blinking-1 0.5s infinite 2s step-end alternate, show-1 2s ease-in-out forwards;
+}
+
+@keyframes show-1 {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+@keyframes typing-1 {
+    from{
+        width: 0;
+    }
+    to{
+        width: 6ch;
+    }
+}
+
+@keyframes blinking-1 {
+    50%{
+        border-color: transparent;
+    }
+    
+}
+
+.sign-in div input{
+    padding: 20px;
+    color: rgb(97, 0, 97);
+    border-radius: 10px 0px 10px 0px;
+    box-shadow: none;
+    border: 1px solid rgb(97, 0, 97);
+    outline: none;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    transform: translateX(5px) scale(0.8);
+    transform: translateY(5px) scale(0.8);
+    transform: translateZ(5px) scale(0.8);
+}
+
+.sign-in div input:focus{
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+    box-shadow: 0 0 10px rgb(97, 0, 97),
+    0 0 22px rgb(97, 0, 97);
+}
+
+.sign-in-div-1{
+    opacity: 0%;
+    animation: input-1 0.8s ease-in-out 1.5s forwards;
+}
+
+.sign-in-div-2{
+    opacity: 0%;
+    animation: input-2 0.8s ease-in-out 1.8s forwards;
+}
+
+.send-login{
+    opacity: 0%;
+    padding: 30px 80px 30px 80px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px 0px 10px 0px;
+    color: rgb(97, 0, 97);
+    transform: translateX(5px) scale(0.8);
+    transform: translateY(5px) scale(0.8);
+    transform: translateZ(5px) scale(0.8);
+    border: 1px solid rgb(97, 0, 97);
+    animation: btn-login 3s ease-in-out 2.5s forwards;
+}
+
+.send-login:hover{
+    box-shadow: 0 0 10px rgb(97, 0, 97),
+    0 0 22px rgb(97, 0, 97);
+    background-color: gray;
+    color: rgb(131, 0, 131);
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+}
+
+.alert-login{
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    font-size: 1.6rem;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0%);
+    padding: 30px 50px 30px 50px;
+    border-radius: 7px 0px 7px 0px;
+}
+
+.alert-login-close{
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    color: black;
+    transform: translateX(5px) scale(0.9);
+    transform: translateY(5px) scale(0.9);
+    transform: translateZ(5px) scale(0.9);
+}
+.alert-login-close:hover{
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+    cursor: pointer;
+}
+
+.animation-alert-1{
+    opacity: 0;
+    animation: animation-alert-1 0.2s ease-in 0s forwards;
+}
+
+.animation-alert-2{
+    opacity: 0;
+    animation: animation-alert-2 0.2s ease-in 0s forwards;
+}
+
+.animation-alert-3{
+    animation: animation-alert-3 0.2s 0s forwards;
+}
+
+@keyframes animation-alert-1 {
+    0%{
+        opacity: 0;
+        top: -50px;
+    }
+    50%{
+        opacity: 100%;
+    }100%{
+        top: 50px;
+        opacity: 100%;
+    }
+}
+
+@keyframes animation-alert-2 {
+    0%{
+        opacity: 100%;
+        top: 50px;
+    }100%{
+        top: -50px;
+        opacity: 0%;
+    }
+}
+
+@keyframes animation-alert-3 {
+    0%{
+        top: 50px;
+        opacity: 100%;
+        left: 47%;
+    }50%{
+        top: 50px;
+        opacity: 100%;
+        left: 53%;
+    }100%{
+        top: 50px;
+        opacity: 100%;
+        left: 50%;
+    }
+}
+
+@keyframes input-1 {
+    0%{
+        opacity: 0%;
+        margin-left: 500px;
+    }50%{
+        opacity: 100%;
+    }
+    100%{
+        margin-left: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes input-2 {
+    0%{
+        opacity: 0%;
+        margin-right: 500px;
+    }50%{
+        opacity: 100%;
+    }
+    100%{
+        margin-right: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes btn-login {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+
+
+@keyframes blinking-continue {
+    0%{
+        opacity: 0%;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+
+/* Animation Show */
+
+@keyframes show {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+        transform: translateY(5px) scale(1);
+    }
+}
+
+@keyframes show-developer {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+/* Animation Hide Welcome */
+
+.animation-hide-welcome{
+    animation: animation-hide 2s ease-in-out 0s forwards;
+}
+
+@keyframes animation-hide {
+    0%{
+        transform: translateX(0%) scale(1);
+        transform: translateY(0%) scale(1);
+        transform: translateZ(0%) scale(1);
+        opacity: 100%;
+    }
+    100%{
+        transform: translateX(100%) scale(0);
+        transform: translateY(100%) scale(0);
+        transform: translateZ(100%) scale(0);
+        opacity: 0%;
+    }
+}
+
+
+/* Animation Show */
+
+.animation-show{
+    animation: show-1 2s ease-in-out 0s forwards;
+}
+
+/* Animation Hide */
+
+.animation-hide{
+    animation: hide 1s ease-in-out 0s forwards;
+}
+
+.animation-hide-1{
+    animation: hide 0.5s ease-in-out 0s forwards;
+}
+
+@keyframes hide {
+    0%{
+        opacity: 100%;
+    }100%{
+        opacity: 0%;
+    }
+}
+
+.user-created{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem;
+    background-color: rgba(97, 0, 97, 0.5);
+    padding: 60px;
+    border-radius: 30px 3px 30px 3px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.user-created p{
+    margin-bottom: 15px;
+}
+
+.btn-registred{
+    padding: 20px 60px 20px 60px;
+    margin-top: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 10px 0px 10px 0px;
+    color: rgb(97, 0, 97);
+    transform: translateX(5px) scale(0.8);
+    transform: translateY(5px) scale(0.8);
+    transform: translateZ(5px) scale(0.8);
+    border: 1px solid rgb(97, 0, 97);
+    transition: 0.3s ease;
+}
+
+.btn-registred:hover{
+    box-shadow: 0 0 10px rgb(97, 0, 97),
+    0 0 22px rgb(97, 0, 97);
+    background-color: gray;
+    color: rgb(131, 0, 131);
+    transform: translateX(5px) scale(1);
+    transform: translateY(5px) scale(1);
+    transform: translateZ(5px) scale(1);
+}

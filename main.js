@@ -20,7 +20,7 @@ function createWindow(){
         },
     })
 
-    win.loadFile('./src/index.html')
+    win.loadFile('./user.html')
     if(isDev){
         win.webContents.openDevTools()
     }
