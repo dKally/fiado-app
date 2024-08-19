@@ -1,5 +1,5 @@
 const fs = require('fs-extra')
-const zip = require('zip-local')
+const archiver = require('archiver');
 const path = require('path')
 const os = require('os')
 const { shell } = require('electron')
@@ -18,32 +18,43 @@ document.querySelector('.backup').addEventListener('click', ()=>{
     openBackup()
 })
 
-const clientsPaste = path.join(__dirname, '..', 'Clientes FiadoAPP')
-
-const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip')
-
+const clientsPaste = path.join(__dirname, '..', 'Clientes FiadoAPP');
+const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip');
 
 function saveBackup() {
+  document.querySelector('.container-alert-2').classList.remove('hide');
 
-  document.querySelector('.container-alert-2').classList.remove('hide')
+  document.querySelector('.exit2').addEventListener('click', () => {
+    document.querySelector('.container-alert-2').classList.add('hide');
+  });
 
-  document.querySelector('.exit2').addEventListener('click', ()=>{
+  document.querySelector('.zip').addEventListener('click', () => {
+    document.querySelector('.container-alert-2').classList.add('hide');
+    shell.openPath(path.join(os.homedir(), 'Documentos'));
 
-    document.querySelector('.container-alert-2').classList.add('hide')}
+    // Criando um arquivo de saída para o ZIP
+    const output = fs.createWriteStream(clientsZip);
+    const archive = archiver('zip', {
+      zlib: { level: 9 } // Definindo a taxa de compressão
+    });
 
-  )
+    output.on('close', function() {
+      console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`);
+    });
 
+    archive.on('error', function(err) {
+      throw err;
+    });
 
-  document.querySelector('.zip').addEventListener('click', ()=>{
-    document.querySelector('.container-alert-2').classList.add('hide')
-    shell.openPath(path.join(os.homedir(), 'Documentos'))
+    // Definindo o arquivo de saída
+    archive.pipe(output);
 
-  zip.sync.zip(clientsPaste).compress().save(clientsZip)
+    // Adicionando a pasta a ser zipada
+    archive.directory(clientsPaste, false);
 
-  console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`)
-
-  })
-
+    // Finalizando o processo de zip
+    archive.finalize();
+  });
 }
 
 
