@@ -63,7 +63,7 @@ body{
     transform: translateX(5px) scale(1);
     transform: translateY(5px) scale(1);
     transform: translateZ(5px) scale(1);
-    color: #fff;
+    color: #000000;
 }
 
 .btn{
@@ -76,5 +76,5 @@ body{
     transform: translateX(5px) scale(1);
     transform: translateY(5px) scale(1);
     transform: translateZ(5px) scale(1);
-    color: #fff;
+    color: #000000;
 }

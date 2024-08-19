@@ -238,13 +238,15 @@ document.querySelector('#submit-payment').addEventListener('click', ()=>{
 
 function submitPayment() {
     const paymentInput = document.querySelector('#payment');
-    const paymentValue = parseFloat(paymentInput.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
+    const paymentValue = paymentInput.value
+    // const paymentValue = parseFloat(paymentInput.value.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.'))
+    console.log(paymentValue)
   
     if (isNaN(paymentValue) || paymentValue <= 0) {
       alert('Digite um valor válido para o pagamento.')
       return;
     }
-  
+    
     const currentDate = new Date()
     const formattedDateTime = getFormattedDateTime(currentDate)
   

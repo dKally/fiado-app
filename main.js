@@ -80,6 +80,4 @@ ipcMain.on('minimize-window', () => {
     win.minimize()
 })
 
-const menuTemplate = [
-
-]
+const menuTemplate = []

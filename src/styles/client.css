@@ -9,7 +9,7 @@ body{
     padding: 5px;
     outline: none;
     box-shadow: 0 0 0 0;
-    border: 1px solid rgb(97, 0, 97);
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 3px;
     font-size: 1.05rem;
     color: #fff;
@@ -37,8 +37,8 @@ body{
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
-    border-top: 1px solid rgb(97, 0, 97);
-    border-bottom: 1px solid rgb(97, 0, 97);
+    border-top: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
     margin-bottom: 10px;
     padding: 10px;
 }
@@ -71,7 +71,7 @@ body{
 }
 
 .new-purshase-div{
-    border-bottom: 1px solid rgb(97, 0, 97);
+    border-bottom: 1px solid rgb(255, 255, 255);
     margin-left: 20px;
     margin-right: 20px;
     padding: 10px;
@@ -84,7 +84,7 @@ body{
 #purchase-list{
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid rgb(97, 0, 97);
+    border-bottom: 1px solid rgb(255, 255, 255);
     margin-left: 20px;
     margin-right: 20px;
     padding: 30px;
@@ -121,7 +121,7 @@ body{
     justify-content: center;
     align-items: center;
     margin: 20px;
-    border-bottom: 1px solid rgb(97, 0, 97);
+    border-bottom: 1px solid rgb(255, 255, 255);
     padding-bottom: 20px;
     font-size: 1.5rem;
 }
@@ -134,8 +134,8 @@ body{
 #payment-list{
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid rgb(97, 0, 97);
-    border-top: 1px solid rgb(97, 0, 97);
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-top: 1px solid rgb(255, 255, 255);
     margin-left: 20px;
     margin-right: 20px;
     padding: 30px;

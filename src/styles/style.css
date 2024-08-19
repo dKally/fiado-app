@@ -21,19 +21,19 @@ body{
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    color: rgb(97, 0, 97);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     border-radius: 5px;
-    border: 2px solid rgb(97, 0, 97);
+    border: 2px solid rgb(255, 255, 255);
     transition: 0.4s ease;
 }
   
 .btn:hover {
     cursor: pointer;
-    background-color: rgb(97, 0, 97);
-    box-shadow: 0 0 10px rgb(97, 0, 97),
-    0 0 22px rgb(97, 0, 97);
-    color: #fff;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255);
+    color: #000000;
 }
 
 .hide{

@@ -26,10 +26,10 @@ a{
 }
   
 .btn:hover {
-    background-color: rgb(97, 0, 97);
-    box-shadow: 0 0 10px rgb(97, 0, 97),
-    0 0 22px rgb(97, 0, 97);
-    color: #fff;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgb(255, 255, 255),
+    0 0 22px rgb(255, 255, 255);
+    color: #000000;
     transform: translateX(5px) scale(1);
     transform: translateY(5px) scale(1);
     transform: translateZ(5px) scale(1);

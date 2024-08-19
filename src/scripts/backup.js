@@ -48,7 +48,7 @@ function saveBackup() {
 
 
 function openBackupPaste(){
-    shell.openPath(path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP'))
+  shell.openPath(path.join(os.homedir(), 'Documentos'))
 }
 
 
