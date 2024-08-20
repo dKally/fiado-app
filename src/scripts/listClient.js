@@ -1,19 +1,19 @@
+const { ipcRenderer } = require('electron')
 const fs = require('fs')
 const path = require('path')
-const os = require('os')
 
-const clientsPath = path.join(__dirname, '..', 'Clientes FiadoAPP')
+const clientsFolder = ipcRenderer.sendSync('clientsFolder');
 const container = document.getElementById('folder-list')
 const searchInput = document.getElementById('search-input')
 
-fs.readdir(clientsPath, (error, files) => {
+fs.readdir(clientsFolder, (error, files) => {
   if (error) {
     console.error(error)
     return;
   }
 
   let folderNames = files.filter((file) => {
-    const filePath = path.join(clientsPath, file)
+    const filePath = path.join(clientsFolder, file)
     return fs.lstatSync(filePath).isDirectory()
   })
 

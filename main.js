@@ -4,6 +4,8 @@ const path = require('path')
 let win
 
 const isDev = process.env.NODE_ENV !== undefined && process.env.NODE_ENV === "development"? true:false
+// const isDev = true
+
 
 app.setName("FiadoAPP")
 
@@ -19,6 +21,8 @@ function createWindow(){
             contextIsolation: false,
         },
     })
+
+    initTabListener()
 
     win.loadFile('./user.html')
     if(isDev){
@@ -45,6 +49,19 @@ function createWindow(){
         dialog.showOpenDialog(win, { properties: ['openDirectory'] }).then(result => {
           event.sender.send('selected-folder', result.filePaths);
         })
+    })
+}
+
+const userDataPath = app.getPath('userData');
+const clientsFolder = path.join(userDataPath, 'Clientes FiadoAPP');
+const userJSON = path.join(userDataPath, 'user.json');
+
+function initTabListener(){
+    ipcMain.on('userJSON', (event)=>{
+        event.returnValue = userJSON
+    })
+    ipcMain.on('clientsFolder', (event)=>{
+        event.returnValue = clientsFolder
     })
 }
 

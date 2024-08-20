@@ -1,19 +1,17 @@
-const os = require('os');
-const path = require('path');
+const { ipcRenderer } = require('electron');
 const fs = require('fs');
 
-function checkCreateClientesFolder() {
-  const clientesFolderPath = path.join(__dirname, 'Clientes FiadoAPP');
+const clientsFolder = ipcRenderer.sendSync('clientsFolder');
 
-  if (!fs.existsSync(clientesFolderPath)) {
-    fs.mkdirSync(clientesFolderPath);
+function checkCreateClientesFolder() {
+  console.log('clientsFolder: ' + clientsFolder);
+
+  if (!fs.existsSync(clientsFolder)) {
+    fs.mkdirSync(clientsFolder);
     console.log('Pasta "Clientes FiadoAPP" criada com sucesso!');
-    console.log(clientesFolderPath)
   } else {
     console.log('Pasta "Clientes FiadoAPP" já existe.');
   }
 }
 
 checkCreateClientesFolder();
-
-

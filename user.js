@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const { shell } = require('electron')
+const { ipcRenderer } = require('electron');
+
 
 const linkElement = document.querySelector('.developer')
 linkElement.addEventListener('click', (event) => {
@@ -10,7 +12,9 @@ linkElement.addEventListener('click', (event) => {
     shell.openExternal(url)
 })
 
-const userJSON = path.join(__dirname, 'user.json')
+const userJSON = ipcRenderer.sendSync('userJSON');
+
+console.log(userJSON)
 
 const divRegister = document.querySelector('.register')
 const appHtml = path.join(__dirname, '/src', '/index.html')
@@ -100,6 +104,20 @@ function startLogin() {
     fs.readFile(userJSON, 'utf8', (error, data) => {
         if (error) {
             console.log(error)
+            document.querySelector('.welcome').classList.remove('hide')
+
+            setInterval(() => {
+                if (homeScreen === true) {
+                    document.addEventListener('keydown', (event) => {
+                        if (event.key) {
+                            document.querySelector('.welcome').classList.add('animation-hide-welcome')
+                            startRegister()
+
+                            homeScreen = false
+                        }
+                    })
+                }
+            }, 4000);
             return
         }
 

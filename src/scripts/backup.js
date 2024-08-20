@@ -4,6 +4,8 @@ const path = require('path')
 const os = require('os')
 const { shell } = require('electron')
 
+const clientsFolder = ipcRenderer.sendSync('clientsFolder');
+const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip');
 
 
 document.querySelector('.save-backup').addEventListener('click', ()=>{
@@ -18,8 +20,6 @@ document.querySelector('.backup').addEventListener('click', ()=>{
     openBackup()
 })
 
-const clientsPaste = path.join(__dirname, '..', 'Clientes FiadoAPP');
-const clientsZip = path.join(os.homedir(), 'Documentos', 'Clientes FiadoAPP.zip');
 
 function saveBackup() {
   document.querySelector('.container-alert-2').classList.remove('hide');
@@ -39,7 +39,7 @@ function saveBackup() {
     });
 
     output.on('close', function() {
-      console.log(`Backup da pasta "${clientsPaste}" criado com sucesso em "${clientsZip}".`);
+      console.log(`Backup da pasta "${clientsFolder}" criado com sucesso em "${clientsZip}".`);
     });
 
     archive.on('error', function(err) {
@@ -50,7 +50,7 @@ function saveBackup() {
     archive.pipe(output);
 
     // Adicionando a pasta a ser zipada
-    archive.directory(clientsPaste, false);
+    archive.directory(clientsFolder, false);
 
     // Finalizando o processo de zip
     archive.finalize();
@@ -95,10 +95,10 @@ ipcRenderer.on('selected-folder', (event, paths) => {
   
         if (path.basename(folderPath) === 'Clientes FiadoAPP') {
           try {
-            fs.removeSync(clientsPaste) 
-            fs.moveSync(folderPath, clientsPaste) 
+            fs.removeSync(clientsFolder) 
+            fs.moveSync(folderPath, clientsFolder) 
     
-            console.log(`A pasta "Clientes FiadoAPP" foi movida e substituiu ${clientsPaste}`)
+            console.log(`A pasta "Clientes FiadoAPP" foi movida e substituiu ${clientsFolder}`)
             document.querySelector('.container-alert-1').classList.add('hide')
             console.log('Backup feito com sucesso!')
           } catch (error) {

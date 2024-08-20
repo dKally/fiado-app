@@ -1,6 +1,8 @@
-const os = require('os')
+const { ipcRenderer } = require('electron')
 const path = require('path')
 const fs = require('fs')
+
+const clientsFolder = ipcRenderer.sendSync('clientsFolder');
 
 const urlParams = new URLSearchParams(window.location.search)
 const currentClient = urlParams.get('currentClient')
@@ -8,17 +10,15 @@ console.log(currentClient)
 
 let currentClientPath
 
-const clientsPath = path.join(__dirname, '..', 'Clientes FiadoAPP')
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const folder = urlParams.get('folder');
 
     if(currentClient == undefined){
-        currentClientPath  = clientsPath + "/" + folder
+        currentClientPath  = clientsFolder + "/" + folder
         console.log(currentClientPath)
     } else{
-        currentClientPath  = clientsPath + "/" + currentClient
+        currentClientPath  = clientsFolder + "/" + currentClient
         console.log(currentClientPath)
     }
 

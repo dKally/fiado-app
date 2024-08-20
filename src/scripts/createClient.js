@@ -1,13 +1,12 @@
-
-const os = require('os')
+const { ipcRenderer } = require('electron')
 const path = require('path')
 const fs = require('fs')
+
+const clientsFolder = ipcRenderer.sendSync('clientsFolder');
 
 document.querySelector('.submit-btn').addEventListener('click', () => {
   sendForm();
 })
-
-const clientsPath = path.join(__dirname, '..', 'Clientes FiadoAPP')
 
 let name
 let lastName
@@ -45,7 +44,7 @@ function sendForm() {
 
 function createFolder(){
 
-    clientFolderPath = path.join(clientsPath, `${name} ${lastName}`)
+    clientFolderPath = path.join(clientsFolder, `${name} ${lastName}`)
     console.log(clientFolderPath)
 
  

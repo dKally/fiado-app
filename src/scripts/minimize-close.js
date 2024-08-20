@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron')
+// const { ipcRenderer } = require('electron')
 
 document.querySelector('.close').addEventListener('click', () => {
     ipcRenderer.send('close-window')
